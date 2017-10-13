@@ -1,0 +1,4 @@
+# Example 1. Good for .Rmd files
+sum_function <- function(x,y) {x+y}
+obj <- try(sum_function(5, "a"))
+if( inherits(obj, "try-error")) stop("Error in sum_function")

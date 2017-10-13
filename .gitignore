@@ -1,0 +1,19 @@
+# R Specific
+*.RData
+*.Rhistory
+*.Rapp.history
+
+# RStudio files
+*.Rproj.user/
+*.Rproj.user
+.Rproj.user
+.Ruserdata
+
+# Data files
+**.csv
+**.xlsx
+**.rds
+**.png
+**.gif
+**.jpeg
+**.jpg
