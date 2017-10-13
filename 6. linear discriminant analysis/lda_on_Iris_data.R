@@ -37,6 +37,19 @@ ggplot(dataset) + geom_point(aes(lda.LD1, lda.LD2, colour = species, shape = spe
 
 ggord(ldaFit, train$Species)
 
+####################################### PCA ###########################################
+pca <- prcomp(train[,c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")], scale = F, center = F)
+prop.pca = pca$sdev^2/sum(pca$sdev^2)
+
+dataset <- data.frame(species = test$Species,
+                      lda = ldaPredClasses$x,
+                      pca = pca$x)
+
+ggplot(dataset) + geom_point(aes(pca.PC1, pca.PC2, colour = species, shape = species), size = 2.5) +
+  labs(x = paste("PC1 (", percent(prop.pca[1]), ")", sep=""),
+       y = paste("PC2 (", percent(prop.pca[2]), ")", sep=""))
+
+
 ####################################### III. QDA #############################################
 qdaFit <- qda(Species~., 
               train,
